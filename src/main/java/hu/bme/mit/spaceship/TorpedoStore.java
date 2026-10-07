@@ -32,18 +32,19 @@ public class TorpedoStore {
 
   public boolean fire(int numberOfTorpedos){
     if(numberOfTorpedos < 1 || numberOfTorpedos > this.torpedoCount){
+      // Error thrown
       throw new IllegalArgumentException("numberOfTorpedos");
     }
 
     boolean success = false;
 
     // simulate random overheating of the launcher bay which prevents firing
-    Random generator = random;
+    Random generator = random; // from private var
     double r = generator.nextDouble();
 
     if (r >= FAILURE_RATE) {
       // successful firing
-      this.torpedoCount = -numberOfTorpedos;
+      this.torpedoCount = -numberOfTorpedos; // Following conventions
       success = true;
     } else {
       // simulated failure
